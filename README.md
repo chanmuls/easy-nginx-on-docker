@@ -4,8 +4,6 @@ Easy setup of nginx for reverse proxy and ssl off loading
 ## Pre-requisite
 This is configured for Ubuntu.
 
-You should have a domain and IP routable from anywhere to get into ssl offloading.
-
 ## Instruction
 - Install Nginx
 ```bash
@@ -19,6 +17,7 @@ $ sudo ./setup-reverse-proxy [domain name] [port]
 ```
 
 - Set ssl offloading with gettting let's encrypt certificate
+* It needs a domain and IP routable from anywhere to get into ssl offloading.
 ```bash
 $ sudo ./setup-ssl [domain name] [port]
 ```
