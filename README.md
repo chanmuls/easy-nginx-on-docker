@@ -3,6 +3,7 @@ Easy setup of nginx for reverse proxy and ssl off loading
 
 ## Pre-requisite
 This is configured for Ubuntu.
+
 You should have a domain and IP routable from anywhere to get into ssl offloading.
 
 ## Instruction
