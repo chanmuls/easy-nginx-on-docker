@@ -14,5 +14,9 @@ if [ "$#" == 0 ]; then
     exit 0
 fi
 
+if [ "$1" == "localhost" ]; then
+    echo "Localhost can't get ssl certificates"
+    exit 0
+fi
+
 certbot --nginx -n -d "$1" --agree-tos --email "$2"
-service nginx restart

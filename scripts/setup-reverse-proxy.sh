@@ -15,9 +15,8 @@ if [ "$#" == 0 ]; then
 fi
 
 sed -i -e "s/DOMAIN_NAME/$1/g" nginx.conf
-sed -i -e "s/PORT/8000/g" nginx.conf
+sed -i -e "s/PORT/$2/g" nginx.conf
 
-cp nginx.conf /etc/nginx/sites-enabled/"$1".conf
-\cp nginx.conf-e nginx.conf
-rm nginx.conf-e
-service nginx restart
+rm /etc/nginx/conf.d/default.conf
+cp nginx.conf /etc/nginx/conf.d/"$1".conf
+

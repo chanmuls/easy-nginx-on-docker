@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  # Flask web server
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: web
+    command: python3 ./webapp/index.py
+      - project_name=myproject
+    volumes:
+      - .:/root/myproject  # mount current directory inside container
+    ports:
+      - "5000:5000"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+      args:
+        - domain=localhost
+        - port=5000 # Same as web port
+        - email=kss5662@ajou.ac.kr
+    hostname: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - web
