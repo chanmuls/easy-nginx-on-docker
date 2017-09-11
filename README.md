@@ -1,25 +1,40 @@
-# easy-nginx
-Easy setup of nginx for reverse proxy and ssl off loading
+# easy-nginx-on-docker
+Easy setup of nginx container for reverse proxy and ssl off loading on docker
 
 ## Pre-requisite
-This is configured for Ubuntu.
+You should have domain name and routable IP if you want to set up ssl offloading
 
-## Instruction
-- Install Nginx
-```bash
-$ sudo apt-get install nginx
+## Set up
+### If you only want to run with your application,
+Build a Dockerfile for that, modify docker-compose.yml, and go to next step.
+
+### If you only want to run with this demo
+Fill the blank args in service nginx of nginx.conf and go to **Build**
+
+```nginx.conf
+...
+nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+      args:
+        - domain=
+        - port= # Same as web port
+        - email=
+    hostname: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - web
 ```
 
-- Set reverse proxy
-
-  It means http request via 80 port on your machine is forwared to your web application
-```bash
-$ sudo ./setup-reverse-proxy [domain name] [port]
+## Build
+```basy
+$ docker-compose build
 ```
 
-- Set ssl offloading with gettting let's encrypt certificate
-
-  **It needs a domain and IP routable from anywhere to get into ssl offloading.**
-```bash
-$ sudo ./setup-ssl [domain name] [port]
+## Run
+```basy
+$ docker-compose up
 ```
