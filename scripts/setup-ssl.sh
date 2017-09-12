@@ -16,7 +16,8 @@ fi
 
 if [ "$1" == "localhost" ]; then
     echo "Localhost can't get ssl certificates"
-    exit 0
+else certbot --nginx -n -d "$1" --agree-tos --email "$2";
 fi
 
-certbot --nginx -n -d "$1" --agree-tos --email "$2"
+
+nginx -g 'daemon off;'

@@ -19,4 +19,3 @@ sed -i -e "s/PORT/$2/g" nginx.conf
 
 rm /etc/nginx/conf.d/default.conf
 cp nginx.conf /etc/nginx/conf.d/"$1".conf
-

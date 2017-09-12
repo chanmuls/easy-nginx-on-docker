@@ -19,10 +19,10 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
       args:
-        - domain=localhost
-        - port=5000 # Same as web port
-        - email=kss5662@ajou.ac.kr
+        - domain= [domain name]
+        - port=[port] # Same as web port
     hostname: nginx
+    command: ./setup-ssl.sh [domain name] [email]
     ports:
       - "80:80"
       - "443:443"
